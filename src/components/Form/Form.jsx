@@ -1,4 +1,6 @@
 import { useState } from "react";
+import validatePassword from "../../helper/passwordValidator";
+import validateEmail from "../../helper/emailValidator"
 import "./Form.css"
 function Form() {
     const [formValues, setFormValues] = useState({
@@ -6,8 +8,26 @@ function Form() {
         password: ""
     })
 
+    const handleValidatePassword = ()=>{
+        const password = formValues.password;
+        if(!validatePassword(password)){
+            console.log("Pasword not contains required parameter");
+            
+        }
+    }
+
+    const handleValidateEmail = ()=>{
+        const email = formValues.email;
+        if(!validateEmail(email)){
+            console.log("Email not contains required parameter");
+            
+        }
+    }
+
     const handelFormSubmit = (event) => {
         event.preventDefault();
+        handleValidateEmail();
+        handleValidatePassword();
     }
     return (
         <div>
