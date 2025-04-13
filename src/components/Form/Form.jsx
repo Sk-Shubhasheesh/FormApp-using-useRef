@@ -12,6 +12,7 @@ function Form() {
         const password = formValues.password;
         if(!validatePassword(password)){
             console.log("Pasword not contains required parameter");
+            document.getElementById("password-input").focus();
             
         }
     }
@@ -20,6 +21,7 @@ function Form() {
         const email = formValues.email;
         if(!validateEmail(email)){
             console.log("Email not contains required parameter");
+            document.getElementById("email-input").focus();
             
         }
     }
@@ -35,6 +37,7 @@ function Form() {
             <form onSubmit={handelFormSubmit}>
                 <div className='wrapper email-input-wrapper'>
                     <input 
+                    id="email-input"
                     type='email' 
                     value={formValues.email} 
                     onChange={(event)=>{setFormValues({...formValues, email:event.target.value})}}
@@ -43,6 +46,7 @@ function Form() {
 
                 <div className='wrapper password-input-wrapper'>
                     <input 
+                     id="password-input"
                     type='password' 
                     value={formValues.password}
                     onChange={(event)=>{setFormValues({...formValues, password:event.target.value})}}
